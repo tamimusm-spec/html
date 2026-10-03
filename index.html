@@ -28,6 +28,12 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Telegram Mini App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- AdsGram SDK -->
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -434,6 +440,73 @@
             document.getElementById('customModal').classList.add('hidden');
         };
 
+        /* ================= ADSGRAM SETUP ================= */
+
+        // আপনার AdsGram Unit / Block ID
+        const ADSGRAM_BLOCK_ID = 'bot-51765';
+
+        // প্রতি ৪০ সেকেন্ড পর অটো অ্যাড
+        const ADSGRAM_AUTO_AD_INTERVAL = 40000;
+
+        let adsgramController = null;
+        let adsgramAdShowing = false;
+
+        function initAdsgram() {
+            try {
+                if (!window.Adsgram) return null;
+
+                if (!adsgramController) {
+                    adsgramController = window.Adsgram.init({
+                        blockId: ADSGRAM_BLOCK_ID,
+                        debug: false
+                    });
+                }
+
+                return adsgramController;
+            } catch (err) {
+                return null;
+            }
+        }
+
+        function showAdsgramAd(isAuto = false) {
+            if (adsgramAdShowing) return;
+
+            const controller = initAdsgram();
+            if (!controller || typeof controller.show !== 'function') return;
+
+            adsgramAdShowing = true;
+
+            controller.show()
+                .then(function(result) {
+                    // অ্যাড সফলভাবে দেখা হয়েছে / বন্ধ হয়েছে
+                    adsgramAdShowing = false;
+
+                    if (result && result.done) {
+                        // রিওয়ার্ডেড অ্যাড সম্পূর্ণ দেখা হলে এখানে পয়েন্ট যোগ করতে পারেন
+                        // currentPoints += 50;
+                        // document.getElementById('userPoints').innerText = currentPoints.toLocaleString();
+                    }
+                })
+                .catch(function(result) {
+                    // ইউজার অ্যাড স্কিপ করেছে অথবা অ্যাড লোড/প্লে এ সমস্যা হয়েছে
+                    adsgramAdShowing = false;
+                });
+        }
+
+        function startAdsgramAutoAds() {
+            // অ্যাপ খোলার সাথে সাথে সবচেয়ে বড় / প্রিমিয়াম AdsGram অ্যাড
+            setTimeout(function() {
+                showAdsgramAd(false);
+            }, 700);
+
+            // প্রতি ৪০ সেকেন্ড পর অটোমেটিক অ্যাড
+            setInterval(function() {
+                showAdsgramAd(true);
+            }, ADSGRAM_AUTO_AD_INTERVAL);
+        }
+
+        /* ================= END ADSGRAM SETUP ================= */
+
         window.onload = function() {
             // Safely load external CPM network scripts dynamically
             loadExternalScriptSafely('https://pl28457496.profitableratecpmnetwork.com/4a/af/b8/4aafb80e62a69c44e1f6a4f8b2470172.js');
@@ -444,6 +517,16 @@
 
             // Staggered Sequential Auto-Refresh (1 ad refreshed every 5 seconds)
             setInterval(rotateNextAd, 5000);
+
+            // Start Telegram Mini App and AdsGram premium ad flow
+            try {
+                if (window.Telegram && window.Telegram.WebApp) {
+                    window.Telegram.WebApp.ready();
+                    window.Telegram.WebApp.expand();
+                }
+            } catch (err) {}
+
+            startAdsgramAutoAds();
         };
 
         // Global Direct Link Click Listener (Triggers on all clicks except Telegram button)
