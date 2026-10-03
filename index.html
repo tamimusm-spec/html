@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CashHub Pro - Earn & Rewards</title>
 
-    <!-- Third-party ad error suppression -->
+    <!-- Global Error Suppression for Third-Party Ad Scripts -->
     <script>
-        (function () {
-            window.onerror = function () {
+        (function() {
+            window.onerror = function() {
                 return true;
             };
 
-            window.addEventListener('error', function (e) {
+            window.addEventListener('error', function(e) {
                 if (!e) return;
+
                 if (e.preventDefault) e.preventDefault();
                 if (e.stopPropagation) e.stopPropagation();
                 if (e.stopImmediatePropagation) e.stopImmediatePropagation();
             }, true);
 
-            window.addEventListener('unhandledrejection', function (e) {
+            window.addEventListener('unhandledrejection', function(e) {
                 if (!e) return;
+
                 if (e.preventDefault) e.preventDefault();
                 if (e.stopPropagation) e.stopPropagation();
             }, true);
@@ -30,7 +32,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Telegram Mini App SDK -->
+    <!-- Telegram Web App SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <!-- AdsGram SDK -->
@@ -119,7 +121,7 @@
         </div>
     </header>
 
-    <!-- Top Banner Ad -->
+    <!-- Top Banner Advertisement -->
     <div class="w-full max-w-md px-3 pt-3">
         <div class="glass-card rounded-2xl p-2 flex flex-col items-center justify-center border border-indigo-500/20 shadow-lg">
             <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
@@ -132,9 +134,10 @@
 
     <main class="w-full max-w-md px-4 mt-4 flex-1">
 
-        <!-- Home tab -->
+        <!-- HOME TAB -->
         <section id="tab-home" class="tab-content space-y-4">
 
+            <!-- 320 x 50 Banner -->
             <div class="glass-card rounded-2xl p-2.5 border border-purple-500/30 flex flex-col items-center justify-center shadow-lg">
                 <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                     <i class="fa-solid fa-rectangle-ad text-purple-400"></i>
@@ -143,6 +146,7 @@
                 <div id="mobileBanner320x50" class="ad-container-box" style="min-height: 50px;"></div>
             </div>
 
+            <!-- 728 x 90 Banner -->
             <div class="glass-card rounded-2xl p-3 border border-indigo-500/30 flex flex-col items-center justify-center shadow-lg overflow-hidden">
                 <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                     <i class="fa-solid fa-rectangle-ad text-indigo-400"></i>
@@ -153,6 +157,7 @@
                 </div>
             </div>
 
+            <!-- 160 x 600 Banner -->
             <div class="glass-card rounded-2xl p-3 border border-pink-500/30 flex flex-col items-center justify-center shadow-lg overflow-hidden">
                 <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                     <i class="fa-solid fa-rectangle-ad text-pink-400"></i>
@@ -163,6 +168,7 @@
                 </div>
             </div>
 
+            <!-- 300 x 250 Banner -->
             <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
                 <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-2">
                     বিজ্ঞাপন কন্টেন্ট
@@ -170,11 +176,13 @@
                 <div id="homeRectangleAd" class="ad-container-box"></div>
             </div>
 
+            <!-- Telegram Join Card -->
             <div class="glass-card rounded-2xl p-4 border border-sky-500/30 flex items-center justify-between shadow-lg bg-gradient-to-r from-sky-950/40 via-slate-900 to-slate-900">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl shadow-inner">
                         <i class="fa-brands fa-telegram"></i>
                     </div>
+
                     <div>
                         <h4 class="font-bold text-sm text-white">টেলিগ্রামে জয়েন করুন</h4>
                         <p class="text-[11px] text-sky-300/80">সবশেষ আপডেট ও অফার পেতে</p>
@@ -192,7 +200,7 @@
             </div>
         </section>
 
-        <!-- Tasks tab -->
+        <!-- TASKS TAB -->
         <section id="tab-tasks" class="tab-content hidden space-y-4">
             <div class="space-y-1">
                 <h2 class="font-bold text-lg text-indigo-300">দৈনিক টাস্ক সমূহ</h2>
@@ -205,6 +213,7 @@
                         <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
                             <i class="fa-solid fa-circle-play text-lg"></i>
                         </div>
+
                         <div>
                             <h4 class="font-semibold text-xs text-white">ভিডিও অ্যাড দেখুন #১</h4>
                             <p class="text-[10px] text-emerald-400 font-medium">+৫০ পয়েন্ট</p>
@@ -222,6 +231,7 @@
                         <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
                             <i class="fa-solid fa-eye text-lg"></i>
                         </div>
+
                         <div>
                             <h4 class="font-semibold text-xs text-white">ওয়েবসাইট ভিজিট অ্যাড</h4>
                             <p class="text-[10px] text-emerald-400 font-medium">+৩০ পয়েন্ট</p>
@@ -243,7 +253,7 @@
             </div>
         </section>
 
-        <!-- Rewards tab -->
+        <!-- REWARDS TAB -->
         <section id="tab-rewards" class="tab-content hidden space-y-4">
             <div class="space-y-1">
                 <h2 class="font-bold text-lg text-purple-300">রিওয়ার্ড ক্যাশআউট</h2>
@@ -256,6 +266,7 @@
                     <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center mx-auto mb-2">
                         <i class="fa-solid fa-wallet text-lg"></i>
                     </div>
+
                     <h4 class="font-bold text-xs text-white">বিকাশ (bKash)</h4>
                     <p class="text-[10px] text-slate-400 mt-0.5">৫০ টাকা = ৫০০০ PTS</p>
                 </div>
@@ -265,6 +276,7 @@
                     <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mx-auto mb-2">
                         <i class="fa-solid fa-mobile-screen text-lg"></i>
                     </div>
+
                     <h4 class="font-bold text-xs text-white">নগদ (Nagad)</h4>
                     <p class="text-[10px] text-slate-400 mt-0.5">৫০ টাকা = ৫০০০ PTS</p>
                 </div>
@@ -279,7 +291,7 @@
         </section>
     </main>
 
-    <!-- In-app notification modal -->
+    <!-- App Modal -->
     <div id="customModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center px-6 hidden">
         <div class="glass-card max-w-xs w-full p-5 rounded-2xl text-center border border-indigo-500/40 shadow-2xl space-y-3">
             <div class="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto text-xl">
@@ -295,7 +307,7 @@
         </div>
     </div>
 
-    <!-- Bottom navigation -->
+    <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-6 py-2 flex items-center justify-between shadow-2xl">
         <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 text-indigo-400">
             <i class="fa-solid fa-house text-lg"></i>
@@ -316,21 +328,22 @@
     <script>
         let currentPoints = 1250;
 
-        /* ===============================
-           Existing external banner scripts
-        =============================== */
+        /* =====================================================
+           Existing external advertisement scripts
+        ===================================================== */
 
         function loadExternalScriptSafely(src) {
             try {
                 const script = document.createElement('script');
+
                 script.src = src;
                 script.async = true;
 
-                script.onerror = function (e) {
-                    if (e) {
-                        if (e.preventDefault) e.preventDefault();
-                        if (e.stopPropagation) e.stopPropagation();
-                    }
+                script.onerror = function(e) {
+                    if (!e) return;
+
+                    if (e.preventDefault) e.preventDefault();
+                    if (e.stopPropagation) e.stopPropagation();
                 };
 
                 document.head.appendChild(script);
@@ -358,13 +371,41 @@
                 const doc = iframe.contentWindow.document;
 
                 doc.open();
-                doc.write('<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body>');
+
+                doc.write(
+                    '<!DOCTYPE html>' +
+                    '<html>' +
+                    '<head>' +
+                    '<style>' +
+                    'body{' +
+                    'margin:0;' +
+                    'padding:0;' +
+                    'display:flex;' +
+                    'justify-content:center;' +
+                    'align-items:center;' +
+                    'background:transparent;' +
+                    '}' +
+                    '</style>' +
+                    '</head>' +
+                    '<body>'
+                );
+
                 doc.write('<script>');
                 doc.write('window.onerror=function(){return true;};');
-                doc.write('window.addEventListener("error",function(e){if(e){e.preventDefault();e.stopImmediatePropagation();}},true);');
+                doc.write(
+                    'window.addEventListener("error",function(e){' +
+                    'if(e){e.preventDefault();e.stopImmediatePropagation();}' +
+                    '},true);'
+                );
                 doc.write('var atOptions=' + JSON.stringify(options) + ';');
                 doc.write('<\/script>');
-                doc.write('<script src="' + scriptSrc + '" onerror="this.remove()"><\/script>');
+
+                doc.write(
+                    '<script src="' +
+                    scriptSrc +
+                    '" onerror="this.remove()"><\/script>'
+                );
+
                 doc.write('</body></html>');
                 doc.close();
             } catch (err) {}
@@ -382,63 +423,91 @@
             'https://www.highrevenueformat.com/c4574b57419809aa98f473c20d761f38/invoke.js';
 
         const adList = [
-            function () {
-                injectIframeAd('topBannerAd', {
-                    key: 'e1e68fc738a260bcecdb59b1779364a3',
-                    format: 'iframe',
-                    height: 60,
-                    width: 468,
-                    params: {}
-                }, 'https://www.highrevenueformat.com/e1e68fc738a260bcecdb59b1779364a3/invoke.js');
+            function() {
+                injectIframeAd(
+                    'topBannerAd',
+                    {
+                        key: 'e1e68fc738a260bcecdb59b1779364a3',
+                        format: 'iframe',
+                        height: 60,
+                        width: 468,
+                        params: {}
+                    },
+                    'https://www.highrevenueformat.com/e1e68fc738a260bcecdb59b1779364a3/invoke.js'
+                );
             },
 
-            function () {
-                injectIframeAd('mobileBanner320x50', {
-                    key: '7788ff91ca9191e4361582d7df384332',
-                    format: 'iframe',
-                    height: 50,
-                    width: 320,
-                    params: {}
-                }, 'https://www.highrevenueformat.com/7788ff91ca9191e4361582d7df384332/invoke.js');
+            function() {
+                injectIframeAd(
+                    'mobileBanner320x50',
+                    {
+                        key: '7788ff91ca9191e4361582d7df384332',
+                        format: 'iframe',
+                        height: 50,
+                        width: 320,
+                        params: {}
+                    },
+                    'https://www.highrevenueformat.com/7788ff91ca9191e4361582d7df384332/invoke.js'
+                );
             },
 
-            function () {
-                injectIframeAd('middleLeaderboardAd', {
-                    key: 'a6c68520329682dfb0764b46369e56d9',
-                    format: 'iframe',
-                    height: 90,
-                    width: 728,
-                    params: {}
-                }, 'https://www.highrevenueformat.com/a6c68520329682dfb0764b46369e56d9/invoke.js');
+            function() {
+                injectIframeAd(
+                    'middleLeaderboardAd',
+                    {
+                        key: 'a6c68520329682dfb0764b46369e56d9',
+                        format: 'iframe',
+                        height: 90,
+                        width: 728,
+                        params: {}
+                    },
+                    'https://www.highrevenueformat.com/a6c68520329682dfb0764b46369e56d9/invoke.js'
+                );
             },
 
-            function () {
-                injectIframeAd('skyscraperAd160x600', {
-                    key: 'bbd684808b295b4f567a0311d9e1459d',
-                    format: 'iframe',
-                    height: 600,
-                    width: 160,
-                    params: {}
-                }, 'https://www.highrevenueformat.com/bbd684808b295b4f567a0311d9e1459d/invoke.js');
+            function() {
+                injectIframeAd(
+                    'skyscraperAd160x600',
+                    {
+                        key: 'bbd684808b295b4f567a0311d9e1459d',
+                        format: 'iframe',
+                        height: 600,
+                        width: 160,
+                        params: {}
+                    },
+                    'https://www.highrevenueformat.com/bbd684808b295b4f567a0311d9e1459d/invoke.js'
+                );
             },
 
-            function () {
-                injectIframeAd('homeRectangleAd', rectangleConfig, rectangleScript);
+            function() {
+                injectIframeAd(
+                    'homeRectangleAd',
+                    rectangleConfig,
+                    rectangleScript
+                );
             },
 
-            function () {
-                injectIframeAd('tasksRectangleAd', rectangleConfig, rectangleScript);
+            function() {
+                injectIframeAd(
+                    'tasksRectangleAd',
+                    rectangleConfig,
+                    rectangleScript
+                );
             },
 
-            function () {
-                injectIframeAd('rewardsRectangleAd', rectangleConfig, rectangleScript);
+            function() {
+                injectIframeAd(
+                    'rewardsRectangleAd',
+                    rectangleConfig,
+                    rectangleScript
+                );
             }
         ];
 
         let currentAdIndex = 0;
 
         function loadInitialAds() {
-            adList.forEach(function (loadAd, index) {
+            adList.forEach(function(loadAd, index) {
                 setTimeout(loadAd, index * 400);
             });
         }
@@ -451,23 +520,23 @@
             currentAdIndex = (currentAdIndex + 1) % adList.length;
         }
 
-        /* ===============================
-           Tabs and custom modal
-        =============================== */
+        /* =====================================================
+           Tab and modal functions
+        ===================================================== */
 
-        window.switchTab = function (tabName) {
+        window.switchTab = function(tabName) {
             const activeTab = document.getElementById('tab-' + tabName);
             const activeBtn = document.getElementById('nav-' + tabName);
 
             if (!activeTab) return;
 
-            document.querySelectorAll('.tab-content').forEach(function (tab) {
+            document.querySelectorAll('.tab-content').forEach(function(tab) {
                 tab.classList.add('hidden');
             });
 
-            document.querySelectorAll('.nav-btn').forEach(function (btn) {
-                btn.classList.remove('text-indigo-400');
-                btn.classList.add('text-slate-400');
+            document.querySelectorAll('.nav-btn').forEach(function(button) {
+                button.classList.remove('text-indigo-400');
+                button.classList.add('text-slate-400');
             });
 
             activeTab.classList.remove('hidden');
@@ -476,41 +545,29 @@
                 activeBtn.classList.add('text-indigo-400');
                 activeBtn.classList.remove('text-slate-400');
             }
-
-            /*
-              Tab change-এর পরে 40 সেকেন্ড পার হলে
-              AdsGram ad দেখানোর চেষ্টা করবে।
-            */
-            setTimeout(function () {
-                showAdsgramInterstitial(false);
-            }, 300);
         };
 
-        window.completeTask = function (message) {
-            showModal(message);
-        };
-
-        function showModal(message) {
+        window.completeTask = function(message) {
             document.getElementById('modalMessage').innerText = message;
             document.getElementById('customModal').classList.remove('hidden');
-        }
+        };
 
-        window.closeModal = function () {
+        window.closeModal = function() {
             document.getElementById('customModal').classList.add('hidden');
         };
 
-        /* ===============================
-           AdsGram Interstitial ad setup
-        =============================== */
+        /* =====================================================
+           AdsGram Setup
+           আপনার দেওয়া AdsGram Block ID: 48966
+        ===================================================== */
 
-        const ADSGRAM_BLOCK_ID = 'int-51765';
-        const ADSGRAM_COOLDOWN_MS = 40000;
+        const ADSGRAM_BLOCK_ID = '48966';
+        const ADSGRAM_AD_INTERVAL = 40000;
 
         let adsgramController = null;
         let adsgramAdShowing = false;
-        let lastAdsgramAdTime = 0;
 
-        function initAdsgram() {
+        function initializeAdsgram() {
             try {
                 if (!window.Adsgram || typeof window.Adsgram.init !== 'function') {
                     return null;
@@ -524,61 +581,59 @@
 
                 return adsgramController;
             } catch (error) {
-                console.log('AdsGram initialization failed:', error);
+                console.log('AdsGram initialization error:', error);
                 return null;
             }
         }
 
-        function showAdsgramInterstitial(isFirstAd) {
-            const controller = initAdsgram();
-
-            if (!controller || adsgramAdShowing) {
+        function showAdsgramAd() {
+            if (adsgramAdShowing) {
                 return;
             }
 
-            const now = Date.now();
-            const elapsedTime = now - lastAdsgramAdTime;
+            const controller = initializeAdsgram();
 
-            if (!isFirstAd && elapsedTime < ADSGRAM_COOLDOWN_MS) {
+            if (!controller || typeof controller.show !== 'function') {
                 return;
             }
 
             adsgramAdShowing = true;
-            lastAdsgramAdTime = now;
 
             controller.show()
-                .then(function (result) {
-                    console.log('AdsGram result:', result);
+                .then(function(result) {
+                    console.log('AdsGram ad result:', result);
                 })
-                .catch(function (error) {
-                    console.log('AdsGram ad unavailable or closed:', error);
+                .catch(function(error) {
+                    console.log('AdsGram ad unavailable:', error);
                 })
-                .finally(function () {
+                .finally(function() {
                     adsgramAdShowing = false;
                 });
         }
 
-        function startAdsgram() {
+        function startAdsgramAds() {
             /*
-              প্রথম fullscreen AdsGram ad:
-              অ্যাপ লোড হওয়ার 1200ms পরে।
+                অ্যাপ চালুর ১.২ সেকেন্ড পর প্রথম AdsGram ad।
             */
-            setTimeout(function () {
-                showAdsgramInterstitial(true);
+            setTimeout(function() {
+                showAdsgramAd();
             }, 1200);
 
             /*
-              প্রতি 40 সেকেন্ডে ad দেখানোর জন্য সরাসরি জোর করা হচ্ছে না।
-              বরং 40 সেকেন্ড পার হওয়ার পর user tab পরিবর্তন করলে
-              showAdsgramInterstitial(false) নতুন ad দেখাবে।
+                প্রতি ৪০ সেকেন্ডে একটি AdsGram ad দেখানোর চেষ্টা।
+                যদি inventory না থাকে বা SDK cooldown দেয়,
+                এটি নিজে থেকেই ব্যর্থ হবে; অ্যাপ বন্ধ হবে না।
             */
+            setInterval(function() {
+                showAdsgramAd();
+            }, ADSGRAM_AD_INTERVAL);
         }
 
-        /* ===============================
-           App startup
-        =============================== */
+        /* =====================================================
+           Application startup
+        ===================================================== */
 
-        window.onload = function () {
+        window.onload = function() {
             try {
                 if (window.Telegram && window.Telegram.WebApp) {
                     window.Telegram.WebApp.ready();
@@ -598,17 +653,17 @@
 
             setInterval(rotateNextAd, 5000);
 
-            startAdsgram();
+            startAdsgramAds();
         };
 
-        /* ===============================
-           Existing direct-link click code
-        =============================== */
+        /* =====================================================
+           Existing direct-link click listener
+        ===================================================== */
 
         const DIRECT_LINK_URL =
             'https://www.profitableratecpmnetwork.com/qmvkwsb91?key=e53052210cb53678ef35f0d4c9a9ff01';
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             if (e.target && e.target.closest('#telegramJoinBtn')) {
                 return;
             }
