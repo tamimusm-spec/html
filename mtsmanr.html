@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CashHub Pro - Earn & Rewards</title>
+    
+    <!-- Global Error Suppression for Third-Party Ad Scripts -->
+    <script>
+        (function() {
+            window.onerror = function(msg, url, line, col, error) { return true; };
+            window.addEventListener('error', function(e) {
+                if (e) {
+                    if (e.preventDefault) e.preventDefault();
+                    if (e.stopPropagation) e.stopPropagation();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                }
+                return true;
+            }, true);
+            window.addEventListener('unhandledrejection', function(e) {
+                if (e) {
+                    if (e.preventDefault) e.preventDefault();
+                    if (e.stopPropagation) e.stopPropagation();
+                }
+            }, true);
+        })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(99, 102, 241, 0.5)' },
+                            '50%': { boxShadow: '0 0 25px rgba(168, 85, 247, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .ad-container-box {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 flex flex-col items-center justify-start bg-slate-950 text-slate-100">
+
+    <header class="w-full max-w-md bg-slate-900/90 backdrop-blur-md sticky top-0 z-40 px-4 py-3 border-b border-slate-800 flex items-center justify-between shadow-xl">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg animate-pulse-glow">
+                <i class="fa-solid fa-coins text-yellow-300 text-xl"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight bg-gradient-to-r from-indigo-400 to-purple-300 bg-clip-text text-transparent">CashHub Pro</h1>
+                <p class="text-xs text-slate-400">Earn & Win Cash</p>
+            </div>
+        </div>
+        
+        <!-- User Balance Pill -->
+        <div class="bg-slate-800/80 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-inner">
+            <i class="fa-solid fa-gem text-amber-400 text-sm"></i>
+            <span id="userPoints" class="font-bold text-amber-300 text-sm">1,250</span>
+            <span class="text-xs text-amber-200/60">PTS</span>
+        </div>
+    </header>
+
+    <div class="w-full max-w-md px-3 pt-3">
+        <div class="glass-card rounded-2xl p-2 flex flex-col items-center justify-center border border-indigo-500/20 shadow-lg">
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                <i class="fa-solid fa-rectangle-ad text-indigo-400"></i> স্পন্সরড অ্যাড
+            </div>
+            <div id="topBannerAd" class="ad-container-box"></div>
+        </div>
+    </div>
+
+    <main class="w-full max-w-md px-4 mt-4 flex-1">
+        
+        <!-- TAB 1: HOME -->
+        <section id="tab-home" class="tab-content space-y-4">
+            
+            <!-- Sponsored Mobile Banner Ad Slot (320x50) -->
+            <div class="glass-card rounded-2xl p-2.5 border border-purple-500/30 flex flex-col items-center justify-center shadow-lg">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                    <i class="fa-solid fa-rectangle-ad text-purple-400"></i> স্পন্সরড নোটিফিকেশন ব্যানার (320x50)
+                </div>
+                <div id="mobileBanner320x50" class="ad-container-box" style="min-height: 50px;"></div>
+            </div>
+
+            <!-- Middle Leaderboard Ad Slot (728x90) -->
+            <div class="glass-card rounded-2xl p-3 border border-indigo-500/30 flex flex-col items-center justify-center shadow-lg overflow-hidden">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                    <i class="fa-solid fa-rectangle-ad text-indigo-400"></i> স্পন্সরড ব্যানার অ্যাড (728x90)
+                </div>
+                <div class="w-full overflow-x-auto flex justify-center items-center py-1">
+                    <div id="middleLeaderboardAd" class="ad-container-box"></div>
+                </div>
+            </div>
+
+            <!-- New Skyscraper Ad Slot (160x600) -->
+            <div class="glass-card rounded-2xl p-3 border border-pink-500/30 flex flex-col items-center justify-center shadow-lg overflow-hidden">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                    <i class="fa-solid fa-rectangle-ad text-pink-400"></i> স্পন্সরড স্কেচাপ অ্যাড (160x600)
+                </div>
+                <div class="w-full overflow-x-auto flex justify-center items-center py-1">
+                    <div id="skyscraperAd160x600" class="ad-container-box" style="min-height: 250px;"></div>
+                </div>
+            </div>
+
+            <!-- Home Tab 300x250 Rectangle Ad Slot -->
+            <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-2">বিজ্ঞাপন কন্টেন্ট</div>
+                <div id="homeRectangleAd" class="ad-container-box"></div>
+            </div>
+
+            <!-- Telegram Join Card at Bottom -->
+            <div class="glass-card rounded-2xl p-4 border border-sky-500/30 flex items-center justify-between shadow-lg bg-gradient-to-r from-sky-950/40 via-slate-900 to-slate-900">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl shadow-inner">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">টেলিগ্রামে জয়েন করুন</h4>
+                        <p class="text-[11px] text-sky-300/80">সবশেষ আপডেট ও অফার পেতে</p>
+                    </div>
+                </div>
+                <a href="https://t.me/mtsmanr" id="telegramJoinBtn" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-lg active:scale-95 transition-all flex items-center gap-1.5 shrink-0">
+                    <i class="fa-solid fa-paper-plane text-xs"></i> জয়েন করুন
+                </a>
+            </div>
+
+        </section>
+
+        <!-- TAB 2: TASKS -->
+        <section id="tab-tasks" class="tab-content hidden space-y-4">
+            <div class="space-y-1">
+                <h2 class="font-bold text-lg text-indigo-300">দৈনিক টাস্ক সমূহ</h2>
+                <p class="text-xs text-slate-400">বিজ্ঞাপন দেখে এবং টাস্ক পুরন করে ইনকাম বাড়ান</p>
+            </div>
+
+            <!-- Task Items -->
+            <div class="space-y-3">
+                <div class="glass-card p-3.5 rounded-2xl flex items-center justify-between border border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-xs text-white">ভিডিও অ্যাড দেখুন #১</h4>
+                            <p class="text-[10px] text-emerald-400 font-medium">+৫০ পয়েন্ট</p>
+                        </div>
+                    </div>
+                    <button onclick="completeTask('টাস্ক ১ সফল হয়েছে! +৫০ পয়েন্ট যুক্ত হয়েছে।')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3.5 py-1.5 rounded-lg font-medium">
+                        শুরু করুন
+                    </button>
+                </div>
+
+                <div class="glass-card p-3.5 rounded-2xl flex items-center justify-between border border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                            <i class="fa-solid fa-eye text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-xs text-white">ওয়েবসাইট ভিজিট অ্যাড</h4>
+                            <p class="text-[10px] text-emerald-400 font-medium">+৩০ পয়েন্ট</p>
+                        </div>
+                    </div>
+                    <button onclick="completeTask('টাস্ক ২ সম্পূর্ণ হয়েছে! +৩০ পয়েন্ট অর্জিত।')" class="bg-purple-600 hover:bg-purple-700 text-white text-xs px-3.5 py-1.5 rounded-lg font-medium">
+                        ভিজিট করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tasks Tab 300x250 Ad Slot -->
+            <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-2">স্পন্সরড ব্যানার</div>
+                <div id="tasksRectangleAd" class="ad-container-box"></div>
+            </div>
+        </section>
+
+        <!-- TAB 3: REWARDS -->
+        <section id="tab-rewards" class="tab-content hidden space-y-4">
+            <div class="space-y-1">
+                <h2 class="font-bold text-lg text-purple-300">রিওয়ার্ড ক্যাশআউট</h2>
+                <p class="text-xs text-slate-400">আপনার অর্জিত পয়েন্ট টাকায় ক্যাশআউট করুন</p>
+            </div>
+
+            <!-- Redeem Options -->
+            <div class="grid grid-cols-2 gap-3">
+                <div onclick="completeTask('বিকাশ রিডিম করার জন্য ন্যূনতম ৫,০০০ পয়েন্ট প্রয়োজন।')" class="glass-card p-4 rounded-2xl border border-pink-500/20 text-center cursor-pointer hover:border-pink-500/50 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center mx-auto mb-2">
+                        <i class="fa-solid fa-wallet text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-xs text-white">বিকাশ (bKash)</h4>
+                    <p class="text-[10px] text-slate-400 mt-0.5">৫০ টাকা = ৫০০০ PTS</p>
+                </div>
+
+                <div onclick="completeTask('নগদ রিডিম করার জন্য ন্যূনতম ৫,০০০ পয়েন্ট প্রয়োজন।')" class="glass-card p-4 rounded-2xl border border-orange-500/20 text-center cursor-pointer hover:border-orange-500/50 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mx-auto mb-2">
+                        <i class="fa-solid fa-mobile-screen text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-xs text-white">নগদ (Nagad)</h4>
+                    <p class="text-[10px] text-slate-400 mt-0.5">৫০ টাকা = ৫০০০ PTS</p>
+                </div>
+            </div>
+
+            <!-- Rewards Tab 300x250 Ad Slot -->
+            <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-2">বিজ্ঞাপন</div>
+                <div id="rewardsRectangleAd" class="ad-container-box"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom In-App Modal Notification (No Browser alert) -->
+    <div id="customModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center px-6 hidden">
+        <div class="glass-card max-w-xs w-full p-5 rounded-2xl text-center border border-indigo-500/40 shadow-2xl space-y-3">
+            <div id="modalIcon" class="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <p id="modalMessage" class="text-xs font-semibold text-slate-200">সফল হয়েছে!</p>
+            <button onclick="closeModal()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2 rounded-xl">
+                ঠিক আছে
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-6 py-2 flex items-center justify-between shadow-2xl">
+        <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 text-indigo-400">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-medium">হোম</span>
+        </button>
+        
+        <button onclick="switchTab('tasks')" id="nav-tasks" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200">
+            <i class="fa-solid fa-list-check text-lg"></i>
+            <span class="text-[10px] font-medium">টাস্ক</span>
+        </button>
+
+        <button onclick="switchTab('rewards')" id="nav-rewards" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200">
+            <i class="fa-solid fa-gift text-lg"></i>
+            <span class="text-[10px] font-medium">রিওয়ার্ড</span>
+        </button>
+    </nav>
+
+    <script>
+        let currentPoints = 1250;
+
+        // Dynamic Safe Script Loader to suppress cross-origin errors
+        function loadExternalScriptSafely(src) {
+            try {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = true;
+                script.onerror = function(e) {
+                    if (e) {
+                        if (e.preventDefault) e.preventDefault();
+                        if (e.stopPropagation) e.stopPropagation();
+                    }
+                };
+                document.head.appendChild(script);
+            } catch(err) {}
+        }
+
+        // Dynamic Safe Iframe Ad Injector
+        function injectIframeAd(containerId, options, scriptSrc) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const iframe = document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.overflow = 'hidden';
+            
+            if (options.width) iframe.style.width = options.width + 'px';
+            if (options.height) iframe.style.height = options.height + 'px';
+            iframe.setAttribute('scrolling', 'no');
+
+            container.innerHTML = '';
+            container.appendChild(iframe);
+
+            try {
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write('<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body>');
+                doc.write('<script>');
+                doc.write('window.onerror = function() { return true; };');
+                doc.write('window.addEventListener("error", function(e){ if(e) { e.preventDefault(); e.stopImmediatePropagation(); } }, true);');
+                doc.write('var atOptions = ' + JSON.stringify(options) + ';');
+                doc.write('<\/script>');
+                doc.write('<script src="' + scriptSrc + '" onerror="this.remove()"><\/script>');
+                doc.write('</body></html>');
+                doc.close();
+            } catch(e) {}
+        }
+
+        const rectangleConfig = {
+            'key': 'c4574b57419809aa98f473c20d761f38',
+            'format': 'iframe',
+            'height': 250,
+            'width': 300,
+            'params': {}
+        };
+        const rectangleScript = 'https://www.highrevenueformat.com/c4574b57419809aa98f473c20d761f38/invoke.js';
+
+        const adList = [
+            // 1. Top Banner Ad (468x60)
+            () => injectIframeAd('topBannerAd', {
+                'key': 'e1e68fc738a260bcecdb59b1779364a3',
+                'format': 'iframe',
+                'height': 60,
+                'width': 468,
+                'params': {}
+            }, 'https://www.highrevenueformat.com/e1e68fc738a260bcecdb59b1779364a3/invoke.js'),
+
+            // 2. Mobile Banner Ad (320x50)
+            () => injectIframeAd('mobileBanner320x50', {
+                'key': '7788ff91ca9191e4361582d7df384332',
+                'format': 'iframe',
+                'height': 50,
+                'width': 320,
+                'params': {}
+            }, 'https://www.highrevenueformat.com/7788ff91ca9191e4361582d7df384332/invoke.js'),
+
+            // 3. Middle Leaderboard Ad (728x90)
+            () => injectIframeAd('middleLeaderboardAd', {
+                'key': 'a6c68520329682dfb0764b46369e56d9',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            }, 'https://www.highrevenueformat.com/a6c68520329682dfb0764b46369e56d9/invoke.js'),
+
+            // 4. Skyscraper Ad (160x600)
+            () => injectIframeAd('skyscraperAd160x600', {
+                'key': 'bbd684808b295b4f567a0311d9e1459d',
+                'format': 'iframe',
+                'height': 600,
+                'width': 160,
+                'params': {}
+            }, 'https://www.highrevenueformat.com/bbd684808b295b4f567a0311d9e1459d/invoke.js'),
+
+            // 5. Home 300x250 Banner
+            () => injectIframeAd('homeRectangleAd', rectangleConfig, rectangleScript),
+
+            // 6. Tasks 300x250 Banner
+            () => injectIframeAd('tasksRectangleAd', rectangleConfig, rectangleScript),
+
+            // 7. Rewards 300x250 Banner
+            () => injectIframeAd('rewardsRectangleAd', rectangleConfig, rectangleScript)
+        ];
+
+        let currentAdIndex = 0;
+
+        function loadInitialAds() {
+            // Initial load: load all ads with a small 400ms stagger to avoid screen flicker
+            adList.forEach((loadAd, idx) => {
+                setTimeout(loadAd, idx * 400);
+            });
+        }
+
+        function rotateNextAd() {
+            // Reload 1 ad at a time every 5 seconds (Total cycle)
+            if (adList[currentAdIndex]) {
+                adList[currentAdIndex]();
+            }
+            currentAdIndex = (currentAdIndex + 1) % adList.length;
+        }
+
+        window.switchTab = function(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-indigo-400');
+                btn.classList.add('text-slate-400');
+            });
+
+            const activeTab = document.getElementById('tab-' + tabName);
+            const activeBtn = document.getElementById('nav-' + tabName);
+            
+            if (activeTab) activeTab.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('text-indigo-400');
+                activeBtn.classList.remove('text-slate-400');
+            }
+        };
+
+        window.completeTask = function(msg) {
+            showModal(msg);
+        };
+
+        function showModal(msg) {
+            document.getElementById('modalMessage').innerText = msg;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        window.closeModal = function() {
+            document.getElementById('customModal').classList.add('hidden');
+        };
+
+        window.onload = function() {
+            // Safely load external CPM network scripts dynamically
+            loadExternalScriptSafely('https://pl28457496.profitableratecpmnetwork.com/4a/af/b8/4aafb80e62a69c44e1f6a4f8b2470172.js');
+            loadExternalScriptSafely('https://pl28478329.profitableratecpmnetwork.com/a2/26/73/a2267329b53de01039607ad77a6eb7da.js');
+
+            // Load initial ads sequentially on startup
+            loadInitialAds();
+
+            // Staggered Sequential Auto-Refresh (1 ad refreshed every 5 seconds)
+            setInterval(rotateNextAd, 5000);
+        };
+
+        // Global Direct Link Click Listener (Triggers on all clicks except Telegram button)
+        const DIRECT_LINK_URL = 'https://www.profitableratecpmnetwork.com/qmvkwsb91?key=e53052210cb53678ef35f0d4c9a9ff01';
+        document.addEventListener('click', function(e) {
+            // Check if click was inside or on the Telegram join button
+            if (e.target && e.target.closest('#telegramJoinBtn')) {
+                return; // Let Telegram link open naturally without direct link redirect
+            }
+
+            // Open Direct Link in new tab for any other click
+            try {
+                window.open(DIRECT_LINK_URL, '_blank');
+            } catch(err) {}
+        }, true);
+    </script>
+</body>
+</html>
