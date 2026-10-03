@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CashHub Pro - Earn & Rewards</title>
 
-    <!-- Global Error Suppression for Third-Party Ad Scripts -->
+    <!-- Third-party ad error suppression -->
     <script>
-        (function() {
-            window.onerror = function() {
+        (function () {
+            window.onerror = function () {
                 return true;
             };
 
-            window.addEventListener('error', function(e) {
-                if (e) {
-                    if (e.preventDefault) e.preventDefault();
-                    if (e.stopPropagation) e.stopPropagation();
-                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-                }
-                return true;
+            window.addEventListener('error', function (e) {
+                if (!e) return;
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
             }, true);
 
-            window.addEventListener('unhandledrejection', function(e) {
-                if (e) {
-                    if (e.preventDefault) e.preventDefault();
-                    if (e.stopPropagation) e.stopPropagation();
-                }
+            window.addEventListener('unhandledrejection', function (e) {
+                if (!e) return;
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
             }, true);
         })();
     </script>
@@ -53,8 +50,7 @@
                         }
                     },
                     animation: {
-                        'pulse-glow': 'pulseGlow 2s infinite',
-                        'spin-slow': 'spin 8s linear infinite'
+                        'pulse-glow': 'pulseGlow 2s infinite'
                     },
                     keyframes: {
                         pulseGlow: {
@@ -101,6 +97,7 @@
 
 <body class="min-h-screen pb-24 flex flex-col items-center justify-start bg-slate-950 text-slate-100">
 
+    <!-- Header -->
     <header class="w-full max-w-md bg-slate-900/90 backdrop-blur-md sticky top-0 z-40 px-4 py-3 border-b border-slate-800 flex items-center justify-between shadow-xl">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg animate-pulse-glow">
@@ -122,6 +119,7 @@
         </div>
     </header>
 
+    <!-- Top Banner Ad -->
     <div class="w-full max-w-md px-3 pt-3">
         <div class="glass-card rounded-2xl p-2 flex flex-col items-center justify-center border border-indigo-500/20 shadow-lg">
             <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1">
@@ -134,7 +132,7 @@
 
     <main class="w-full max-w-md px-4 mt-4 flex-1">
 
-        <!-- HOME TAB -->
+        <!-- Home tab -->
         <section id="tab-home" class="tab-content space-y-4">
 
             <div class="glass-card rounded-2xl p-2.5 border border-purple-500/30 flex flex-col items-center justify-center shadow-lg">
@@ -192,19 +190,16 @@
                     জয়েন করুন
                 </a>
             </div>
-
         </section>
 
-        <!-- TASKS TAB -->
+        <!-- Tasks tab -->
         <section id="tab-tasks" class="tab-content hidden space-y-4">
-
             <div class="space-y-1">
                 <h2 class="font-bold text-lg text-indigo-300">দৈনিক টাস্ক সমূহ</h2>
                 <p class="text-xs text-slate-400">বিজ্ঞাপন দেখে এবং টাস্ক পুরন করে ইনকাম বাড়ান</p>
             </div>
 
             <div class="space-y-3">
-
                 <div class="glass-card p-3.5 rounded-2xl flex items-center justify-between border border-slate-800">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
@@ -238,7 +233,6 @@
                         ভিজিট করুন
                     </button>
                 </div>
-
             </div>
 
             <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
@@ -247,19 +241,16 @@
                 </div>
                 <div id="tasksRectangleAd" class="ad-container-box"></div>
             </div>
-
         </section>
 
-        <!-- REWARDS TAB -->
+        <!-- Rewards tab -->
         <section id="tab-rewards" class="tab-content hidden space-y-4">
-
             <div class="space-y-1">
                 <h2 class="font-bold text-lg text-purple-300">রিওয়ার্ড ক্যাশআউট</h2>
                 <p class="text-xs text-slate-400">আপনার অর্জিত পয়েন্ট টাকায় ক্যাশআউট করুন</p>
             </div>
 
             <div class="grid grid-cols-2 gap-3">
-
                 <div onclick="completeTask('বিকাশ রিডিম করার জন্য ন্যূনতম ৫,০০০ পয়েন্ট প্রয়োজন।')"
                      class="glass-card p-4 rounded-2xl border border-pink-500/20 text-center cursor-pointer hover:border-pink-500/50 transition-all">
                     <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center mx-auto mb-2">
@@ -277,7 +268,6 @@
                     <h4 class="font-bold text-xs text-white">নগদ (Nagad)</h4>
                     <p class="text-[10px] text-slate-400 mt-0.5">৫০ টাকা = ৫০০০ PTS</p>
                 </div>
-
             </div>
 
             <div class="glass-card rounded-2xl p-3 border border-slate-800 flex flex-col items-center justify-center">
@@ -286,18 +276,18 @@
                 </div>
                 <div id="rewardsRectangleAd" class="ad-container-box"></div>
             </div>
-
         </section>
-
     </main>
 
-    <!-- Custom Modal -->
+    <!-- In-app notification modal -->
     <div id="customModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center px-6 hidden">
         <div class="glass-card max-w-xs w-full p-5 rounded-2xl text-center border border-indigo-500/40 shadow-2xl space-y-3">
-            <div id="modalIcon" class="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto text-xl">
+            <div class="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto text-xl">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
+
             <p id="modalMessage" class="text-xs font-semibold text-slate-200">সফল হয়েছে!</p>
+
             <button onclick="closeModal()"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2 rounded-xl">
                 ঠিক আছে
@@ -305,7 +295,7 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom navigation -->
     <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 z-40 px-6 py-2 flex items-center justify-between shadow-2xl">
         <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 text-indigo-400">
             <i class="fa-solid fa-house text-lg"></i>
@@ -326,13 +316,17 @@
     <script>
         let currentPoints = 1250;
 
+        /* ===============================
+           Existing external banner scripts
+        =============================== */
+
         function loadExternalScriptSafely(src) {
             try {
                 const script = document.createElement('script');
                 script.src = src;
                 script.async = true;
 
-                script.onerror = function(e) {
+                script.onerror = function (e) {
                     if (e) {
                         if (e.preventDefault) e.preventDefault();
                         if (e.stopPropagation) e.stopPropagation();
@@ -345,14 +339,15 @@
 
         function injectIframeAd(containerId, options, scriptSrc) {
             const container = document.getElementById(containerId);
+
             if (!container) return;
 
             const iframe = document.createElement('iframe');
+
             iframe.style.border = 'none';
             iframe.style.overflow = 'hidden';
-
-            if (options.width) iframe.style.width = options.width + 'px';
-            if (options.height) iframe.style.height = options.height + 'px';
+            iframe.style.width = options.width + 'px';
+            iframe.style.height = options.height + 'px';
 
             iframe.setAttribute('scrolling', 'no');
 
@@ -365,14 +360,14 @@
                 doc.open();
                 doc.write('<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body>');
                 doc.write('<script>');
-                doc.write('window.onerror = function() { return true; };');
-                doc.write('window.addEventListener("error", function(e){ if(e) { e.preventDefault(); e.stopImmediatePropagation(); } }, true);');
-                doc.write('var atOptions = ' + JSON.stringify(options) + ';');
+                doc.write('window.onerror=function(){return true;};');
+                doc.write('window.addEventListener("error",function(e){if(e){e.preventDefault();e.stopImmediatePropagation();}},true);');
+                doc.write('var atOptions=' + JSON.stringify(options) + ';');
                 doc.write('<\/script>');
                 doc.write('<script src="' + scriptSrc + '" onerror="this.remove()"><\/script>');
                 doc.write('</body></html>');
                 doc.close();
-            } catch (e) {}
+            } catch (err) {}
         }
 
         const rectangleConfig = {
@@ -387,7 +382,7 @@
             'https://www.highrevenueformat.com/c4574b57419809aa98f473c20d761f38/invoke.js';
 
         const adList = [
-            function() {
+            function () {
                 injectIframeAd('topBannerAd', {
                     key: 'e1e68fc738a260bcecdb59b1779364a3',
                     format: 'iframe',
@@ -397,7 +392,7 @@
                 }, 'https://www.highrevenueformat.com/e1e68fc738a260bcecdb59b1779364a3/invoke.js');
             },
 
-            function() {
+            function () {
                 injectIframeAd('mobileBanner320x50', {
                     key: '7788ff91ca9191e4361582d7df384332',
                     format: 'iframe',
@@ -407,7 +402,7 @@
                 }, 'https://www.highrevenueformat.com/7788ff91ca9191e4361582d7df384332/invoke.js');
             },
 
-            function() {
+            function () {
                 injectIframeAd('middleLeaderboardAd', {
                     key: 'a6c68520329682dfb0764b46369e56d9',
                     format: 'iframe',
@@ -417,7 +412,7 @@
                 }, 'https://www.highrevenueformat.com/a6c68520329682dfb0764b46369e56d9/invoke.js');
             },
 
-            function() {
+            function () {
                 injectIframeAd('skyscraperAd160x600', {
                     key: 'bbd684808b295b4f567a0311d9e1459d',
                     format: 'iframe',
@@ -427,15 +422,15 @@
                 }, 'https://www.highrevenueformat.com/bbd684808b295b4f567a0311d9e1459d/invoke.js');
             },
 
-            function() {
+            function () {
                 injectIframeAd('homeRectangleAd', rectangleConfig, rectangleScript);
             },
 
-            function() {
+            function () {
                 injectIframeAd('tasksRectangleAd', rectangleConfig, rectangleScript);
             },
 
-            function() {
+            function () {
                 injectIframeAd('rewardsRectangleAd', rectangleConfig, rectangleScript);
             }
         ];
@@ -443,7 +438,7 @@
         let currentAdIndex = 0;
 
         function loadInitialAds() {
-            adList.forEach(function(loadAd, index) {
+            adList.forEach(function (loadAd, index) {
                 setTimeout(loadAd, index * 400);
             });
         }
@@ -456,28 +451,42 @@
             currentAdIndex = (currentAdIndex + 1) % adList.length;
         }
 
-        window.switchTab = function(tabName) {
-            document.querySelectorAll('.tab-content').forEach(function(tab) {
+        /* ===============================
+           Tabs and custom modal
+        =============================== */
+
+        window.switchTab = function (tabName) {
+            const activeTab = document.getElementById('tab-' + tabName);
+            const activeBtn = document.getElementById('nav-' + tabName);
+
+            if (!activeTab) return;
+
+            document.querySelectorAll('.tab-content').forEach(function (tab) {
                 tab.classList.add('hidden');
             });
 
-            document.querySelectorAll('.nav-btn').forEach(function(btn) {
+            document.querySelectorAll('.nav-btn').forEach(function (btn) {
                 btn.classList.remove('text-indigo-400');
                 btn.classList.add('text-slate-400');
             });
 
-            const activeTab = document.getElementById('tab-' + tabName);
-            const activeBtn = document.getElementById('nav-' + tabName);
-
-            if (activeTab) activeTab.classList.remove('hidden');
+            activeTab.classList.remove('hidden');
 
             if (activeBtn) {
                 activeBtn.classList.add('text-indigo-400');
                 activeBtn.classList.remove('text-slate-400');
             }
+
+            /*
+              Tab change-এর পরে 40 সেকেন্ড পার হলে
+              AdsGram ad দেখানোর চেষ্টা করবে।
+            */
+            setTimeout(function () {
+                showAdsgramInterstitial(false);
+            }, 300);
         };
 
-        window.completeTask = function(message) {
+        window.completeTask = function (message) {
             showModal(message);
         };
 
@@ -486,98 +495,90 @@
             document.getElementById('customModal').classList.remove('hidden');
         }
 
-        window.closeModal = function() {
+        window.closeModal = function () {
             document.getElementById('customModal').classList.add('hidden');
         };
 
-        /* =========================================================
-           ADSGRAM SETUP
-           আপনার দেওয়া Unit ID: bot-51765
-           SDK-এর জন্য বৈধ Block ID: 51765
-        ========================================================= */
+        /* ===============================
+           AdsGram Interstitial ad setup
+        =============================== */
 
-        const ADSGRAM_UNIT_ID = 'bot-51765';
-
-        /*
-            "bot-51765" থেকে শুধু বৈধ সংখ্যা 51765 নেওয়া হচ্ছে।
-            AdsGram SDK blockId হিসেবে "bot-51765" গ্রহণ করে না।
-        */
-        const ADSGRAM_BLOCK_ID = ADSGRAM_UNIT_ID.replace('bot-', '');
-
-        const ADSGRAM_AUTO_AD_INTERVAL = 40000;
+        const ADSGRAM_BLOCK_ID = 'int-51765';
+        const ADSGRAM_COOLDOWN_MS = 40000;
 
         let adsgramController = null;
         let adsgramAdShowing = false;
+        let lastAdsgramAdTime = 0;
 
         function initAdsgram() {
             try {
-                if (!window.Adsgram) {
+                if (!window.Adsgram || typeof window.Adsgram.init !== 'function') {
                     return null;
                 }
 
                 if (!adsgramController) {
                     adsgramController = window.Adsgram.init({
-                        blockId: ADSGRAM_BLOCK_ID,
-                        debug: false
+                        blockId: ADSGRAM_BLOCK_ID
                     });
                 }
 
                 return adsgramController;
             } catch (error) {
+                console.log('AdsGram initialization failed:', error);
                 return null;
             }
         }
 
-        function showAdsgramAd() {
-            if (adsgramAdShowing) return;
-
+        function showAdsgramInterstitial(isFirstAd) {
             const controller = initAdsgram();
 
-            if (!controller || typeof controller.show !== 'function') {
+            if (!controller || adsgramAdShowing) {
+                return;
+            }
+
+            const now = Date.now();
+            const elapsedTime = now - lastAdsgramAdTime;
+
+            if (!isFirstAd && elapsedTime < ADSGRAM_COOLDOWN_MS) {
                 return;
             }
 
             adsgramAdShowing = true;
+            lastAdsgramAdTime = now;
 
             controller.show()
-                .then(function(result) {
-                    adsgramAdShowing = false;
-
-                    /*
-                        যদি আপনার AdsGram block Rewarded হয় এবং
-                        ব্যবহারকারী অ্যাড সম্পূর্ণ দেখেন, তাহলে এখানে
-                        পয়েন্ট যোগ করার ব্যবস্থা করতে পারেন।
-                    */
-                    if (result && result.done) {
-                        // উদাহরণ:
-                        // currentPoints += 50;
-                        // document.getElementById('userPoints').innerText =
-                        //     currentPoints.toLocaleString();
-                    }
+                .then(function (result) {
+                    console.log('AdsGram result:', result);
                 })
-                .catch(function(error) {
+                .catch(function (error) {
+                    console.log('AdsGram ad unavailable or closed:', error);
+                })
+                .finally(function () {
                     adsgramAdShowing = false;
                 });
         }
 
-        function startAdsgramAutoAds() {
+        function startAdsgram() {
             /*
-                অ্যাপ ওপেন হওয়ার ১ সেকেন্ড পর AdsGram-এর
-                বড় Interstitial / Rewarded বিজ্ঞাপন দেখানোর চেষ্টা।
+              প্রথম fullscreen AdsGram ad:
+              অ্যাপ লোড হওয়ার 1200ms পরে।
             */
-            setTimeout(function() {
-                showAdsgramAd();
-            }, 1000);
+            setTimeout(function () {
+                showAdsgramInterstitial(true);
+            }, 1200);
 
             /*
-                প্রতি ৪০ সেকেন্ডে একটি করে AdsGram বিজ্ঞাপন।
+              প্রতি 40 সেকেন্ডে ad দেখানোর জন্য সরাসরি জোর করা হচ্ছে না।
+              বরং 40 সেকেন্ড পার হওয়ার পর user tab পরিবর্তন করলে
+              showAdsgramInterstitial(false) নতুন ad দেখাবে।
             */
-            setInterval(function() {
-                showAdsgramAd();
-            }, ADSGRAM_AUTO_AD_INTERVAL);
         }
 
-        window.onload = function() {
+        /* ===============================
+           App startup
+        =============================== */
+
+        window.onload = function () {
             try {
                 if (window.Telegram && window.Telegram.WebApp) {
                     window.Telegram.WebApp.ready();
@@ -597,13 +598,17 @@
 
             setInterval(rotateNextAd, 5000);
 
-            startAdsgramAutoAds();
+            startAdsgram();
         };
+
+        /* ===============================
+           Existing direct-link click code
+        =============================== */
 
         const DIRECT_LINK_URL =
             'https://www.profitableratecpmnetwork.com/qmvkwsb91?key=e53052210cb53678ef35f0d4c9a9ff01';
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target && e.target.closest('#telegramJoinBtn')) {
                 return;
             }
